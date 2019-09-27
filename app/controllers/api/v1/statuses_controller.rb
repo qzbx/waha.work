@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require_relative './../../../../custom_AA/text_replace.rb'
 
 class Api::V1::StatusesController < Api::BaseController
   include Authorization
@@ -45,7 +46,7 @@ class Api::V1::StatusesController < Api::BaseController
 
   def create
     @status = PostStatusService.new.call(current_user.account,
-                                         text: status_params[:status],
+                                         text: text_replace(status_params[:status], current_account[:username]),
                                          thread: status_params[:in_reply_to_id].blank? ? nil : Status.find(status_params[:in_reply_to_id]),
                                          media_ids: status_params[:media_ids],
                                          sensitive: status_params[:sensitive],
