@@ -1,3 +1,6 @@
+# for waha.work
+require_relative './../../../../custom_AA/text_replace.rb'
+
 # frozen_string_literal: true
 
 class Api::V1::StatusesController < Api::BaseController
@@ -53,7 +56,8 @@ class Api::V1::StatusesController < Api::BaseController
   def create
     @status = PostStatusService.new.call(
       current_user.account,
-      text: status_params[:status],
+      # text: status_params[:status],
+      text: text_replace(status_params[:status], current_account[:username]),
       thread: @thread,
       media_ids: status_params[:media_ids],
       sensitive: status_params[:sensitive],
@@ -77,7 +81,8 @@ class Api::V1::StatusesController < Api::BaseController
     UpdateStatusService.new.call(
       @status,
       current_account.id,
-      text: status_params[:status],
+      # text: status_params[:status],
+      text: text_replace(status_params[:status], current_account[:username]),
       media_ids: status_params[:media_ids],
       media_attributes: status_params[:media_attributes],
       sensitive: status_params[:sensitive],
