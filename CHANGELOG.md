@@ -3,6 +3,71 @@ Changelog
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.24] - 2025-03-13
+
+### Security
+
+- Update dependency `omniauth-saml`
+- Update dependency `rack`
+
+### Fixes
+
+- Fix Stoplight errors when using `REDIS_NAMESPACE` (#34126 by @ClearlyClaire)
+
+## [4.1.23] - 2025-02-27
+
+### Security
+
+- Change HTML sanitization to remove unusable and unused `embed` tag (#34021 by @ClearlyClaire, [GHSA-mq2m-hr29-8gqf](https://github.com/mastodon/mastodon/security/advisories/GHSA-mq2m-hr29-8gqf))
+- Fix improper disclosure of domain blocks to unverified users ([GHSA-94h4-fj37-c825](https://github.com/mastodon/mastodon/security/advisories/GHSA-94h4-fj37-c825))
+
+### Fixed
+
+- Fix emoji rewrite adding unnecessary curft to the DOM for most emoji (#33818 by @ClearlyClaire)
+- Fix incorrect signature after HTTP redirect (#33757 and #33769 by @ClearlyClaire)
+- Fix polls not being validated on edition (#33755 by @ClearlyClaire)
+- Fix featured tags for remote accounts not being kept up to date (#33372, #33406, and #33425 by @ClearlyClaire and @mjankowski)
+
+## [4.1.22] - 2025-01-16
+
+### Security
+
+- Fix insufficient validation of account URIs ([GHSA-5wxh-3p65-r4g6](https://github.com/mastodon/mastodon/security/advisories/GHSA-5wxh-3p65-r4g6))
+
+### Fixed
+
+- Fix `libyaml` missing from `Dockerfile` build stage (#33591 by @vmstan)
+- Fix deletion of unconfirmed users with Webauthn set (#33186 by @ClearlyClaire)
+
+## [4.1.21] - 2024-12-03
+
+### Fixed
+
+- Fix inactive users' timelines being backfilled on follow and unsuspend (#33094 by @ClearlyClaire)
+- Fix direct inbox delivery pushing posts into inactive followers' timelines (#33067 by @ClearlyClaire)
+- Fix tl language native name (#32606 by @seav)
+
+### Security
+
+- Update dependencies
+
+## [4.1.20] - 2024-09-30
+
+### Security
+
+- Fix ReDoS vulnerability on some Ruby versions ([GHSA-jpxp-r43f-rhvx](https://github.com/mastodon/mastodon/security/advisories/GHSA-jpxp-r43f-rhvx))
+- Update dependencies
+
+### Changed
+
+- Change Mastodon to issue correct HTTP signatures by default (#31994 by @ClearlyClaire)
+
+### Fixed
+
+- Fix replies collection being cached improperly
+- Fix security context sometimes not being added in LD-Signed activities (#31871 by @ClearlyClaire)
+- Fix error when encountering reblog of deleted post in feed rebuild (#32001 by @ClearlyClaire)
+
 ## [4.1.19] - 2024-08-16
 
 ### Fixed
